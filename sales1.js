@@ -69,7 +69,7 @@ CookieStand.prototype.render = function () {
         const Data = document.createElement("td");
         Data.textContent = this.cookiesEachHour[i];
         dataRow.appendChild(Data);
-        globalTotal += parseInt(this.cookiesEachHour[i])
+        //globalTotal += parseInt(this.cookiesEachHour[i])
     }
 
     const storeTotal = document.createElement("td");
@@ -80,20 +80,22 @@ CookieStand.prototype.render = function () {
 const seattle = new CookieStand('Seattle', 23, 65, 6.3);
 const LA = new CookieStand('LA', 25, 75, 7.3);
 
-console.log(globalTotal)
-//const h4 = document.createElement('h4');
-    //h4.textContent = `Total ${this.totalDailyCookies} cookies`;
-    //article.appendChild(h4);
+//console.log(globalTotal)
 
-//const headerFooter = document.createElement("tr");
-//table.appendChild(headerFooter);
+const headerFooter = document.createElement("tr");
+table.appendChild(headerFooter);
     
-    //for (let i = 0; i < hours.length; i++) {
-        //const Cell = document.createElement("th");
-        //Cell.textContent = [i];
-        //headerRow.appendChild(Cell);
-    //}
+const globalTotalHeader = document.createElement("th");
+globalTotalHeader.textContent = 'Total';
+headerFooter.appendChild(globalTotalHeader);   
+
+
+for (let i = 1; i < hours.length; i++) {
+    const Cell = document.createElement("th");
+    Cell.textContent = parseInt(seattle.cookiesEachHour[i]) + parseInt(LA.cookiesEachHour[i]);
+    headerFooter.appendChild(Cell);
+    }
     
-    //const totalHeader = document.createElement("th");
-            //totalHeader.textContent = 'Total';
-            //headerRow.appendChild(totalHeader);
+const globalestTotalHeader = document.createElement("th");
+globalestTotalHeader.textContent = parseInt(seattle.totalDailyCookies) + parseInt(LA.totalDailyCookies);
+headerFooter.appendChild(globalestTotalHeader);
