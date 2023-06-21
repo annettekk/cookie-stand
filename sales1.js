@@ -1,10 +1,12 @@
 'use strict'
 
-let globalTotal = 0;
+//let globalTotal = 0;
 
 const container = document.getElementById("container");
 
 const hours = ['', "6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm"];
+
+let cookieStands = [];
 
 function randomNum(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -37,7 +39,12 @@ function CookieStand(storeName, minCustPerHour, maxCustPerHour, avgCookiesPerHou
     this.totalDailyCookies = 0;
     this.customersEachHour = [];
     this.cookiesEachHour = [];
+    this.pushStands = function() {
+      cookieStands.push(this)
+    }  
+    this.pushStands();
     this.render();
+
   }
 
 CookieStand.prototype.calcCustomersEachHour = function () {
@@ -75,12 +82,17 @@ CookieStand.prototype.render = function () {
     const storeTotal = document.createElement("td");
         storeTotal.textContent = this.totalDailyCookies;
         dataRow.appendChild(storeTotal);
+
+    //cookieStands.push(this)
 }
 
 const seattle = new CookieStand('Seattle', 23, 65, 6.3);
 const LA = new CookieStand('LA', 25, 75, 7.3);
 
-//console.log(globalTotal)
+//console.log(seattle)
+//console.log(cookieStands)
+//console.log(typeof(cookieStands))
+//console.log(typeof(this))
 
 const headerFooter = document.createElement("tr");
 table.appendChild(headerFooter);
@@ -92,10 +104,18 @@ headerFooter.appendChild(globalTotalHeader);
 
 for (let i = 1; i < hours.length; i++) {
     const Cell = document.createElement("th");
-    Cell.textContent = parseInt(seattle.cookiesEachHour[i]) + parseInt(LA.cookiesEachHour[i]);
+    let hourTotal = 0;
+    for (let j = 0; j < cookieStands.length; j++) {
+      hourTotal += cookieStands[j].cookiesEachHour[i];
+      Cell.textContent = hourTotal;
+      }
     headerFooter.appendChild(Cell);
     }
-    
+  
 const globalestTotalHeader = document.createElement("th");
-globalestTotalHeader.textContent = parseInt(seattle.totalDailyCookies) + parseInt(LA.totalDailyCookies);
+let granTotal = 0;
+for (let j = 0; j < cookieStands.length; j++) {
+  granTotal += cookieStands[j].totalDailyCookies;
+}
+globalestTotalHeader.textContent = granTotal;
 headerFooter.appendChild(globalestTotalHeader);
