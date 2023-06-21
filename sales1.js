@@ -87,7 +87,7 @@ CookieStand.prototype.render = function () {
 }
 
 const seattle = new CookieStand('Seattle', 23, 65, 6.3);
-const LA = new CookieStand('LA', 25, 75, 7.3);
+const la = new CookieStand('LA', 25, 75, 7.3);
 const cambridge = new CookieStand('Cambridge', 20, 40, 5.1);
 const protvino = new CookieStand('Protvino', 5, 15, 2);
 const batavia = new CookieStand('Batavia', 1, 10, 4.4)
