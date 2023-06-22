@@ -2,7 +2,11 @@
 
 //let globalTotal = 0;
 
+const storeForm = document.getElementById("addStoreForm");
+
 const container = document.getElementById("container");
+
+
 
 const hours = ['', "6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm"];
 
@@ -39,11 +43,12 @@ function CookieStand(storeName, minCustPerHour, maxCustPerHour, avgCookiesPerHou
     this.totalDailyCookies = 0;
     this.customersEachHour = [];
     this.cookiesEachHour = [];
+    //this.render();
     this.pushStands = function() {
       cookieStands.push(this)
     }  
     this.pushStands();
-    this.render();
+    
 
   }
 
@@ -96,6 +101,61 @@ const batavia = new CookieStand('Batavia', 1, 10, 4.4)
 //console.log(cookieStands)
 //console.log(typeof(cookieStands))
 //console.log(typeof(this))
+
+
+
+addStoreForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  // console.log(event);
+  const storeName = event.target.storeName.value;
+  const minCustPerHour = event.target.minCustPerHour.value;
+  const maxCustPerHour = event.target.maxCustPerHour.value;
+  const avgCookiesPerHour = event.target.avgCookiesPerHour.value;
+
+  const newStore = new CookieStand(storeName, minCustPerHour, maxCustPerHour, avgCookiesPerHour);
+  console.log(newStore);
+  console.log(cookieStands);
+
+  newStore.render()
+  //rendercookieStands();
+
+  const headerFooter = document.createElement("tr");
+table.appendChild(headerFooter);
+    
+const globalTotalHeader = document.createElement("th");
+globalTotalHeader.textContent = 'Total';
+headerFooter.appendChild(globalTotalHeader);   
+
+
+for (let i = 1; i < hours.length; i++) {
+    const Cell = document.createElement("th");
+    let hourTotal = 0;
+    for (let j = 0; j < cookieStands.length; j++) {
+      hourTotal += cookieStands[j].cookiesEachHour[i];
+      Cell.textContent = hourTotal;
+      }
+    headerFooter.appendChild(Cell);
+    }
+  
+const globalestTotalHeader = document.createElement("th");
+let granTotal = 0;
+for (let j = 0; j < cookieStands.length; j++) {
+  granTotal += cookieStands[j].totalDailyCookies;
+}
+globalestTotalHeader.textContent = granTotal;
+headerFooter.appendChild(globalestTotalHeader);
+
+  addStoreForm.reset();
+});
+
+function rendercookieStands() {
+  for (let i = 0; i < cookieStands.length; i++) {
+    cookieStands[i].render();
+  }
+}
+
+rendercookieStands();
+console.log(cookieStands)
 
 const headerFooter = document.createElement("tr");
 table.appendChild(headerFooter);

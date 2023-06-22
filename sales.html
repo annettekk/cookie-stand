@@ -4,8 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+    <h2>Add a new store:</h2>
+      <form id="addStoreForm">
+        <fieldset>
+          <legend>Basic Information</legend>
+
+          <label for="nameInput">Name</label>
+          <input type="text" id="nameInput" name="storeName" />
+
+          
+        </fieldset>
+        <fieldset>
+          <legend>Customer numbers</legend>
+          <p></p>
+          <label for="MinCuctomers">Min Customers Per Hour</label>
+          <input type="number" id="MinCuctomers" name="minCustPerHour" />
+          <span></span>
+          <label for="MaxCuctomers">Max Customers Per Hour</label>
+          <input type="number" id="MaxCuctomers" name="maxCustPerHour" />
+          <span></span>
+        </fieldset>
+          
+          <fieldset>
+            <legend>Average cookie number sold per hour</legend>
+            <label for="AvgCookies">Average Number of Cookies Per Hour</label>
+          <input type="number" id="AvgCookies" name="avgCookiesPerHour" />
+          </fieldset>
+        <button type="submit">SUBMIT</button>
+      </form>
+      
     <div id="container"></div>
     <script src="sales1.js"></script>  
 </body>
