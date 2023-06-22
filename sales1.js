@@ -16,11 +16,11 @@ function randomNum(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
-const article = document.createElement("article");
-container.appendChild(article);
+//const article = document.createElement("article");
+//container.appendChild(article);
 
-const table = document.createElement("table");
-article.appendChild(table);
+//const table = document.createElement("table");
+//article.appendChild(table);
     
 const headerRow = document.createElement("tr");
 table.appendChild(headerRow);
@@ -116,6 +116,8 @@ addStoreForm.addEventListener("submit", function (event) {
   console.log(newStore);
   console.log(cookieStands);
 
+  deleterow('table');
+
   newStore.render()
   //rendercookieStands();
 
@@ -152,6 +154,13 @@ function rendercookieStands() {
   for (let i = 0; i < cookieStands.length; i++) {
     cookieStands[i].render();
   }
+}
+
+function deleterow(tableID) {
+  var table = document.getElementById(tableID);
+  var rowCount = table.rows.length;
+
+  table.deleteRow(rowCount -1);
 }
 
 rendercookieStands();
