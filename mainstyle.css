@@ -55,6 +55,7 @@ html {
   
   main {
     margin-bottom: 2rem;
+    margin-top: 1rem;
   }
   
   section {
@@ -106,7 +107,9 @@ html {
     margin: 0 auto;
     max-width: 960px;
     padding: 1rem 0 1rem 0;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .footer-container {
@@ -119,4 +122,10 @@ html {
   .footer-container a {
     text-decoration: none;
     color: inherit;
+    
+  }
+
+  .sticky {
+    position: sticky;
+    top:0;
   }
