@@ -109,10 +109,14 @@ html {
     
   }
 
-  /*.footer-container {
+  .footer-container {
     display: flex;
-    
+    justify-content: center;
     align-items: center;
+    
+  }
+
+  .footer-container a {
     text-decoration: none;
     color: inherit;
   }
